@@ -6,6 +6,15 @@
 
     <servlet-mapping>
         <servlet-name>ProductListServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/products-list-servlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <servlet-class>com.example.servlets.AddToCartServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <url-pattern>/add-to-cart</url-pattern>
     </servlet-mapping>
 </web-app>

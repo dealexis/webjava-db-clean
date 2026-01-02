@@ -1,10 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.models.Product" %>
 <html>
 <head>
-    <title>T-Shirts Shop</title>
+    <title>T-Shirts Orders</title>
 </head>
 <body>
 
@@ -37,10 +36,11 @@
         <td><%= p.getStock() %>
         </td>
         <td>
-            <form action="buy" method="post">
-                <input type="hidden" name="productId" value="<%= p.getId() %>"/>
-                <input type="submit" value="Buy"/>
-            </form>
+            <a href="add-to-cart?id=<%= p.getId() %>">
+                <button>
+                    Add to 🛒 Cart
+                </button>
+            </a>
         </td>
     </tr>
     <%
