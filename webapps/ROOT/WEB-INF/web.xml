@@ -1,7 +1,7 @@
 <web-app>
     <servlet>
         <servlet-name>ProductListServlet</servlet-name>
-        <servlet-class>java.com.exapmle.servlets.ProductListServlet</servlet-class>
+        <servlet-class>com.example.servlets.ProductListServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

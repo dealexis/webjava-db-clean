@@ -1,4 +1,4 @@
-package java.com.example.models;
+package com.example.models;
 
 public class Product {
 

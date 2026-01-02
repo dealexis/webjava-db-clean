@@ -1,7 +1,7 @@
-package java.com.example.servlets;
+package com.example.servlets;
 
-import java.com.example.models.Product;
-import java.com.example.utils.DBUtil;
+import com.example.models.Product;
+import com.example.utils.DBUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

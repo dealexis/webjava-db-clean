@@ -1,4 +1,4 @@
-package java.com.example.utils;
+package com.example.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class DBUtil {
 
     private static final String URL =
-            "jdbc:mysql://mysql:3306/java_final?useSSL=false&serverTimezone=UTC";
+            "jdbc:mysql://mysql:3306/webjava?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private static final String USER = "admin";
     private static final String PASSWORD = "password";
 

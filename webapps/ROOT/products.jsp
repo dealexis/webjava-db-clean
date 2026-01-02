@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="java.util.*, java.com.example.models.Product" %>
 
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.models.Product" %>
 <html>
 <head>
     <title>T-Shirts Shop</title>
@@ -25,11 +26,16 @@
             for (Product p : products) {
     %>
     <tr>
-        <td><%= p.getName() %></td>
-        <td><%= p.getSize() %></td>
-        <td><%= p.getColor() %></td>
-        <td>$<%= p.getPrice() %></td>
-        <td><%= p.getStock() %></td>
+        <td><%= p.getName() %>
+        </td>
+        <td><%= p.getSize() %>
+        </td>
+        <td><%= p.getColor() %>
+        </td>
+        <td>$<%= p.getPrice() %>
+        </td>
+        <td><%= p.getStock() %>
+        </td>
         <td>
             <form action="buy" method="post">
                 <input type="hidden" name="productId" value="<%= p.getId() %>"/>
