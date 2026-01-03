@@ -8,7 +8,7 @@
 
     if (cart == null || cart.getItems().isEmpty()) {
 %>
-<p>Your cart is empty.</p>
+<h2>Your cart is empty.</h2>
 <a href="index.jsp">Continue shopping</a>
 <%
 } else {
@@ -37,7 +37,7 @@
 <p>Total: $<%= cart.getTotal() %></p>
 
 <a href="index.jsp">Continue shopping</a> |
-<a href="checkout">Proceed to checkout</a>
+<a href="checkout.jsp">Proceed to checkout</a>
 
 <%
     }

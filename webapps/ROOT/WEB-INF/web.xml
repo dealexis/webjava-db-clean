@@ -17,4 +17,14 @@
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/add-to-cart</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <servlet-class>com.example.servlets.CheckoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <url-pattern>/checkout</url-pattern>
+    </servlet-mapping>
 </web-app>

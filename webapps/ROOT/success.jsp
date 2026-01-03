@@ -11,6 +11,7 @@
     <title>Success</title>
 </head>
 <body>
-
+<h2>Success! Your order is being processed</h2>
+<a href="index.jsp">Return to the shop</a>
 </body>
 </html>
