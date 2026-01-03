@@ -2,13 +2,17 @@ package com.example.dao;
 
 import com.example.cart.Cart;
 import com.example.cart.CartItem;
+import com.example.models.Order;
+import com.example.models.OrderItem;
 import com.example.utils.DBUtil;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderDAO {
 
-    public static void create(Cart cart) throws Exception {
+    public static int create(Cart cart) throws Exception {
         Connection conn = DBUtil.getConnection();
 
         PreparedStatement ps = conn.prepareStatement(
@@ -32,5 +36,56 @@ public class OrderDAO {
             itemPs.setDouble(4, item.getProduct().getPrice());
             itemPs.executeUpdate();
         }
+
+        return orderId;
+    }
+
+    public static Order findById(int id) {
+        Order o = null;
+
+        String sql = "SELECT * FROM orders WHERE id = ?";
+
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                o = new Order();
+                o.setId(rs.getInt("id"));
+                o.setTotalPrice(rs.getDouble("total_price"));
+
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return o;
+    }
+
+    public static List<OrderItem> findItemsByOrderId(Order order) {
+        List<OrderItem> list = new ArrayList<>();
+        String sql = "SELECT * FROM order_items WHERE order_id = ?";
+
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, order.getId());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                OrderItem orderItem = new OrderItem(ProductDAO.findById(rs.getInt("product_id")));
+                orderItem.setQuantity(rs.getInt("quantity"));
+                orderItem.setPrice(rs.getDouble("price"));
+                list.add(orderItem);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
     }
 }

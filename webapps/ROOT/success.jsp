@@ -1,17 +1,49 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: trixi
-  Date: 1/2/26
-  Time: 6:46 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.example.models.Order" %>
+<%@ page import="com.example.cart.CartItem" %>
+<%@ page import="com.example.models.OrderItem" %>
+<%@ page import="com.example.dao.OrderDAO" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Success</title>
+    <title>Order page</title>
 </head>
 <body>
-<h2>Success! Your order is being processed</h2>
-<a href="index.jsp">Return to the shop</a>
+<%
+    Order order = (Order) request.getAttribute("order");
+
+    if (order == null) {
+%>
+<p>No order details available.</p>
+<a href="index.jsp">Back to shop</a>
+<%
+} else {
+%>
+<h2>Order Placed Successfully</h2>
+
+<p><strong>Order ID:</strong> <%= order.getId() %></p>
+<p><strong>Total:</strong> $<%= order.getTotalPrice() %></p>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Subtotal</th>
+    </tr>
+
+    <%
+        for (OrderItem item : OrderDAO.findItemsByOrderId(order)) {
+    %>
+    <tr>
+        <td><%= item.getProduct().getName() %></td>
+        <td><%= item.getQuantity() %></td>
+        <td>$<%= item.getProduct().getPrice() %></td>
+        <td>$<%= item.getSubtotal() %></td>
+    </tr>
+    <%
+        }
+    %>
+</table>
 </body>
 </html>
+<% } %>
