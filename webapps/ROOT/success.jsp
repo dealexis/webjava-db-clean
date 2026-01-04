@@ -1,5 +1,4 @@
 <%@ page import="com.example.models.Order" %>
-<%@ page import="com.example.cart.CartItem" %>
 <%@ page import="com.example.models.OrderItem" %>
 <%@ page import="com.example.dao.OrderDAO" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
@@ -44,6 +43,7 @@
         }
     %>
 </table>
+<% } %>
+<a href="index.jsp">Continue shopping</a>
 </body>
 </html>
-<% } %>
